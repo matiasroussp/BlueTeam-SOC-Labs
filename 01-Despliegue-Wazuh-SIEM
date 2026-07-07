@@ -1,0 +1,17 @@
+Markdown
+# Laboratorio 01: Despliegue de un Entorno EDR/SIEM con Wazuh
+
+## 📝 Introducción
+Este laboratorio práctico tiene como objetivo el despliegue y configuración de una infraestructura de monitorización y respuesta ante incidentes utilizando **Wazuh** sobre un entorno virtualizado seguro. El propósito es centralizar logs y simular la actividad de un Centro de Operaciones de Seguridad (SOC).
+
+## 🏗️ Topología del Entorno
+* **Servidor Central (SIEM/EDR):** Kali Purple (Debian-based), 11 GB RAM, 4 vCPUs.
+* **Endpoint Supervisado:** Windows 11 Pro (Próximamente).
+* **Red:** Configuración [NAT / Red Interna] en VirtualBox.
+
+## 🛠️ Fase 1: Preparación del Sistema Operativo
+Durante el despliegue en el entorno de Kali Purple, se identificó la necesidad de tunear parámetros del Kernel para permitir que el motor de indexación (basado en OpenSearch) levantara correctamente. 
+
+Se modificó de forma persistente el límite de mapas de memoria virtual ejecutando:
+```bash
+sudo sysctl -w vm.max_map_count=262144
